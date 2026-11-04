@@ -2,12 +2,12 @@ import React from 'react';
 import { 
   BookOpen, Download, Palette, Layers, Award, Printer, Sparkles, 
   School, Check, FileDown, ToggleLeft, ToggleRight, Info, Eye,
-  BookMarked, BookCopy, FileCheck
+  BookMarked, BookCopy, FileCheck, Sliders
 } from 'lucide-react';
 
 interface NavbarProps {
-  activeTab: 'books' | 'reader' | 'downloads' | 'design' | 'scope' | 'qa';
-  setActiveTab: (tab: 'books' | 'reader' | 'downloads' | 'design' | 'scope' | 'qa') => void;
+  activeTab: 'books' | 'reader' | 'studio' | 'downloads' | 'design' | 'scope' | 'qa';
+  setActiveTab: (tab: 'books' | 'reader' | 'studio' | 'downloads' | 'design' | 'scope' | 'qa') => void;
   selectedGrade: 7 | 8;
   setSelectedGrade: (grade: 7 | 8) => void;
   onPrint: () => void;
@@ -219,6 +219,22 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>تصفح الدروس صفحة بصفحة</span>
               <span className="text-[10px] px-1.5 py-0.2 bg-[#0891B2]/20 text-[#0891B2] rounded font-mono">
                 90 درساً
+              </span>
+            </button>
+
+            {/* NEW: PDF Designer Studio Tab */}
+            <button
+              onClick={() => setActiveTab('studio')}
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold transition-all ${
+                activeTab === 'studio'
+                  ? 'bg-white text-[#0A2540] shadow-md'
+                  : 'text-slate-300 hover:text-white hover:bg-white/10'
+              }`}
+            >
+              <Sliders className="w-4 h-4 text-emerald-400" />
+              <span>استوديو تنسيق وتوليد الـ PDF</span>
+              <span className="text-[10px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-300 rounded font-bold font-mono">
+                محرر A4
               </span>
             </button>
 

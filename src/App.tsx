@@ -6,6 +6,7 @@ import { DownloadCenter } from './components/DownloadCenter';
 import { DesignSystemView } from './components/DesignSystemView';
 import { ScopeSequenceView } from './components/ScopeSequenceView';
 import { QAAuditView } from './components/QAAuditView';
+import { PDFDesignerStudio } from './components/PDFDesignerStudio';
 
 import grade7Data from './data/grade7_curriculum.json';
 import grade8Data from './data/grade8_curriculum.json';
@@ -14,7 +15,7 @@ import { Printer, CheckCircle, Info, X, Sparkles, FileDown } from 'lucide-react'
 
 export default function App() {
   const [selectedGrade, setSelectedGrade] = useState<7 | 8>(7);
-  const [activeTab, setActiveTab] = useState<'books' | 'reader' | 'downloads' | 'design' | 'scope' | 'qa'>('books');
+  const [activeTab, setActiveTab] = useState<'books' | 'reader' | 'studio' | 'downloads' | 'design' | 'scope' | 'qa'>('books');
   const [currentLessonNum, setCurrentLessonNum] = useState<number>(1);
   const [isPrintFriendly, setIsPrintFriendly] = useState<boolean>(false);
 
@@ -141,6 +142,18 @@ export default function App() {
           />
         )}
 
+        {activeTab === 'studio' && (
+          <PDFDesignerStudio
+            grade={selectedGrade}
+            lessons={currentCurriculum.lessons}
+            units={currentCurriculum.units}
+            currentLessonNum={currentLessonNum}
+            onSelectLesson={setCurrentLessonNum}
+            onSwitchGrade={setSelectedGrade}
+            onPrint={handlePrint}
+          />
+        )}
+
         {activeTab === 'downloads' && (
           <DownloadCenter />
         )}
@@ -212,6 +225,11 @@ export default function App() {
               <li>
                 <button onClick={() => { setActiveTab('reader'); setSelectedGrade(8); }} className="hover:text-cyan-300 transition">
                   تصفح كتاب الصف الثامن (الدروس 1–90)
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab('studio')} className="hover:text-cyan-300 transition text-amber-300 font-bold">
+                  استوديو تنسيق وتوليد صفحات PDF المعتمدة (A4)
                 </button>
               </li>
               <li>
