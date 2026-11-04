@@ -1,0 +1,6 @@
+{
+  "name": "مناهج مدرسة قفلة الأساسية | Qaflah English Curriculum Studio",
+  "description": "نظام النشر والإخراج التعليمي للمناهج الدراسية للغة الإنجليزية لمدرسة قفلة الأساسية - وادي هدى - حبان - شبوة - اليمن (2027-2028) للصفين السابع والثامن مع محرك تصفح تفاعلي وتحميل الكتب والأدلة.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

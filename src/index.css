@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', 'Cairo', system-ui, -apple-system, sans-serif;
+    color: #0f172a;
+    background-color: #f8fafc;
+  }
+}
+
+/* Custom fonts */
+.font-arabic {
+  font-family: 'Cairo', system-ui, sans-serif;
+}
+
+.font-english {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+}
+
+/* On-screen Print-Friendly Mode styles */
+.print-friendly-mode {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.print-friendly-mode .bg-slate-50,
+.print-friendly-mode .bg-slate-100,
+.print-friendly-mode .bg-[#F1F5F9],
+.print-friendly-mode .bg-[#F8FAFC] {
+  background-color: #ffffff !important;
+}
+
+.print-friendly-mode .textbook-sheet {
+  box-shadow: none !important;
+  border-color: #94a3b8 !important;
+  max-width: 820px !important;
+  margin: 0 auto !important;
+}
+
+/* Print Styles for Browser A4 PDF Export */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm 10mm 10mm;
+  }
+
+  html, body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .avoid-break {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .textbook-sheet {
+    box-shadow: none !important;
+    border: 1px solid #64748b !important;
+    border-radius: 8px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background-color: #ffffff !important;
+  }
+
+  /* Force background colors and borders in browser PDF export */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
